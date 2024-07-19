@@ -13,10 +13,23 @@ export const createStyles = (theme: "light" | "dark") =>
       color: Colors[theme].text,
       fontSize: 18,
     },
+    errorText: {
+      color: Colors[theme].danger,
+      fontSize: 10,
+    },
+    title: {
+      color: Colors[theme].text,
+      fontSize: 30,
+    },
     image: {
       flex: 1,
       width: "100%",
       backgroundColor: "#0553",
+    },
+    logo: {
+      width: "60%",
+      height: 150,
+      marginBottom: 50,
     },
     button: {
       backgroundColor: Colors[theme].tint,

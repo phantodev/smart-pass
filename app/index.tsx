@@ -16,11 +16,16 @@ import "../reactotron";
 import { Colors } from "@/constants/Colors";
 import { useForm, useWatch, Controller } from "react-hook-form";
 import React from "react";
+import { Image } from "expo-image";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-interface FormData {
-  email: string;
-  password: string;
-}
+const schema = z.object({
+  email: z.string().email("Digite um e-mail válido"),
+  password: z.string().min(6, "Mínimo de 6 caracteres"),
+});
+
+type FormData = z.infer<typeof schema>;
 
 export default function Login() {
   const colorScheme = useColorScheme() ?? "light";
@@ -34,13 +39,19 @@ export default function Login() {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
 
   const formValues = useWatch({ control });
 
   React.useEffect(() => {
     console.tron.log(formValues); // Loga o estado do formulário no console a cada mudança
   }, [formValues]);
+
+  React.useEffect(() => {
+    console.tron.log(errors); // Mostra os erros do Hook Forms no Reactotron
+  }, [errors]);
 
   const router = useRouter();
 
@@ -67,7 +78,13 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Tela de Login</Text>
+      <Image
+        style={styles.logo}
+        contentFit="contain"
+        source={require("../assets/images/smartpass-logo-light.svg")}
+        transition={1000}
+      />
+      <Text style={styles.title}>Tela de Login</Text>
       <View style={styles.form}>
         <View style={styles.containerInputs}>
           <Text style={styles.labelInputs}>Email</Text>
@@ -87,6 +104,9 @@ export default function Login() {
               />
             )}
           />
+          {errors.email && (
+            <Text style={styles.errorText}>{errors.email.message}</Text>
+          )}
         </View>
         <View style={styles.containerInputs}>
           <Text style={styles.labelInputs}>Senha</Text>
@@ -109,7 +129,7 @@ export default function Login() {
           />
         </View>
       </View>
-      <Pressable style={styles.button} onPress={handleLogin}>
+      <Pressable style={styles.button} onPress={handleSubmit(handleLogin)}>
         {isLoaded ? <ActivityIndicator color="#000000" /> : <Text>Entrar</Text>}
       </Pressable>
     </View>

@@ -9,6 +9,7 @@ const tintColorDark = "#ffff00";
 export const Colors = {
   light: {
     text: "#11181C",
+    danger: "#ff5252",
     background: "#fff",
     backgroundInput: "#ffffff",
     border: "#151718",
@@ -19,6 +20,7 @@ export const Colors = {
   },
   dark: {
     text: "rgba(255, 255, 255, 1)",
+    danger: "#ff5252",
     background: "#151718",
     backgroundInput: "#27272a",
     border: "#2A2A2A",
