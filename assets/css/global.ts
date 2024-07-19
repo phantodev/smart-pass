@@ -13,6 +13,10 @@ export const createStyles = (theme: "light" | "dark") =>
       color: Colors[theme].text,
       fontSize: 18,
     },
+    textGhost: {
+      color: Colors[theme].text,
+      fontSize: 14,
+    },
     errorText: {
       color: Colors[theme].danger,
       fontSize: 10,
@@ -40,10 +44,17 @@ export const createStyles = (theme: "light" | "dark") =>
       display: "flex",
       alignItems: "center",
     },
+    buttonGhost: {
+      marginTop: 40,
+      width: "50%",
+      display: "flex",
+      alignItems: "center",
+    },
     containerInputs: {
       width: "100%",
       display: "flex",
       flexDirection: "column",
+      marginBottom: 20,
     },
     labelInputs: {
       color: Colors[theme].text,
@@ -60,7 +71,6 @@ export const createStyles = (theme: "light" | "dark") =>
       borderBlockColor: Colors[theme].border,
       borderColor: Colors[theme].border,
       borderWidth: 1,
-      marginBottom: 20,
     },
     form: {
       width: "100%",
