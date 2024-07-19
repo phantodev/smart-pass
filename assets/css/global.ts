@@ -47,9 +47,13 @@ export const createStyles = (theme: "light" | "dark") =>
       borderBlockColor: Colors[theme].border,
       borderColor: Colors[theme].border,
       borderWidth: 1,
+      marginBottom: 20,
     },
     form: {
       width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      columnGap: 20,
       paddingVertical: 40,
       paddingHorizontal: 20,
     },
