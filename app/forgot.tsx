@@ -55,12 +55,18 @@ export default function Login() {
 
   const router = useRouter();
 
-  async function handleCreateUser() {
+  async function handleForgotPassword() {
     try {
       const email = formValues.email;
       if (email !== undefined) {
         setIsLoaded(true);
-        await sendPasswordResetEmail(auth, email);
+        try {
+          const response = await sendPasswordResetEmail(auth, email);
+          console.tron.log(response);
+        } catch (firebaseError) {
+          console.tron.log("Firebase error:", firebaseError);
+          throw firebaseError; // Re-lança o erro para ser capturado pelo catch externo
+        }
         Toast.show({
           type: "success",
           text1: "E-mail enviado",
@@ -112,7 +118,9 @@ export default function Login() {
           )}
         </View>
       </View>
-      <Pressable style={styles.button} onPress={handleSubmit(handleCreateUser)}>
+      <Pressable
+        style={styles.button}
+        onPress={handleSubmit(handleForgotPassword)}>
         {isLoaded ? (
           <ActivityIndicator color="#000000" />
         ) : (
