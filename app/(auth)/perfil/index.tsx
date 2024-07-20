@@ -8,6 +8,7 @@ export default function Perfil() {
   const colorScheme = useColorScheme() ?? "light";
   const styles = createStyles(colorScheme);
   const router = useRouter();
+  const [displayName, setDisplayName] = React.useState("");
 
   const handleLogout = () => {
     // Lógica de logout aqui
@@ -28,9 +29,18 @@ export default function Perfil() {
     }
   }
 
+  React.useEffect(() => {
+    getData("user").then((user) => {
+      if (user) {
+        setDisplayName(user.displayName);
+      }
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Tela de Perfil</Text>
+      <Text style={styles.text}>{displayName}</Text>
       <Pressable style={styles.button} onPress={handleLogout}>
         <Text>Logout</Text>
       </Pressable>

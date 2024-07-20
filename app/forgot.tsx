@@ -10,7 +10,7 @@ import {
 import { useRouter } from "expo-router";
 import { createStyles } from "@/assets/css/global";
 import { auth } from "../configs/firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import "../reactotron";
 import { Colors } from "@/constants/Colors";
@@ -21,13 +21,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Toast from "react-native-toast-message";
 
 const schema = z.object({
-  displayName: z.string({ message: "Campo obrigatório" }),
   email: z
     .string({ message: "Campo obrigatório" })
     .email({ message: "Digite um e-mail válido" }),
-  password: z
-    .string({ message: "Campo obrigatório" })
-    .min(6, { message: "Mínimo de 6 caracteres" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -62,76 +58,36 @@ export default function Login() {
   async function handleCreateUser() {
     try {
       const email = formValues.email;
-      const password = formValues.password;
-      const displayName = formValues.displayName;
-      if (email !== undefined && password !== undefined) {
+      if (email !== undefined) {
         setIsLoaded(true);
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        console.tron.log(userCredential);
-        const user = userCredential.user;
-        await updateProfile(user, {
-          displayName: displayName,
-        });
-        await user.reload();
-        const updatedUser = auth.currentUser;
-        await AsyncStorage.setItem("user", JSON.stringify(updatedUser));
+        await sendPasswordResetEmail(auth, email);
         Toast.show({
           type: "success",
-          text1: "Cadastro realizado",
-          text2: "Estamos te redirecionando 😍",
+          text1: "E-mail enviado",
+          text2: "Olhe o seu e-mail 😍",
         });
         setTimeout(() => {
-          router.replace("(auth)");
+          router.replace("/");
         }, 4000);
       }
     } catch (error) {
       Toast.show({
         type: "error",
-        text1: "Login inválido",
+        text1: "E-mail inválido",
         text2: "Verifique seus dados 🤬",
       });
       setIsLoaded(false);
       setError("email", {
         type: "manual",
-        message: "Credênciais inválidas",
-      });
-      setError("password", {
-        type: "manual",
-        message: "Credênciais inválidas",
+        message: "E-mail inexistente",
       });
     }
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cadastre-se</Text>
+      <Text style={styles.title}>Esqueceu a sua senha?</Text>
       <View style={styles.form}>
-        <View style={styles.containerInputs}>
-          <Text style={styles.labelInputs}>Nome</Text>
-          <Controller
-            control={control}
-            name="displayName"
-            rules={{ required: true }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                placeholder="Digite o seu e-mail"
-                style={styles.input}
-                placeholderTextColor={placeholderColor}
-                selectionColor={Colors[colorScheme].text}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-          />
-          {errors.displayName && (
-            <Text style={styles.errorText}>{errors.displayName.message}</Text>
-          )}
-        </View>
         <View style={styles.containerInputs}>
           <Text style={styles.labelInputs}>Email</Text>
           <Controller
@@ -155,39 +111,16 @@ export default function Login() {
             <Text style={styles.errorText}>{errors.email.message}</Text>
           )}
         </View>
-        <View style={styles.containerInputs}>
-          <Text style={styles.labelInputs}>Senha</Text>
-          <Controller
-            control={control}
-            name="password"
-            rules={{ required: true }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                placeholder="Digite o seu password"
-                style={styles.input}
-                secureTextEntry={true}
-                placeholderTextColor={placeholderColor}
-                selectionColor={Colors[colorScheme].text}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-          />
-          {errors.password && (
-            <Text style={styles.errorText}>{errors.password.message}</Text>
-          )}
-        </View>
       </View>
       <Pressable style={styles.button} onPress={handleSubmit(handleCreateUser)}>
         {isLoaded ? (
           <ActivityIndicator color="#000000" />
         ) : (
-          <Text>Cadastre-se</Text>
+          <Text>Recuperar senha</Text>
         )}
       </Pressable>
       <Pressable style={styles.buttonGhost} onPress={() => router.push("/")}>
-        <Text style={styles.textGhost}>Eu já possuo cadastro</Text>
+        <Text style={styles.textGhost}>Lembrei minha senha</Text>
       </Pressable>
     </View>
   );

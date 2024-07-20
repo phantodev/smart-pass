@@ -149,6 +149,11 @@ export default function Login() {
           )}
         </View>
       </View>
+      <Pressable
+        style={styles.buttonGhost}
+        onPress={() => router.push("/forgot")}>
+        <Text style={styles.textGhost}>Esqueci minha senha</Text>
+      </Pressable>
       <Pressable style={styles.button} onPress={handleSubmit(handleLogin)}>
         {isLoaded ? <ActivityIndicator color="#000000" /> : <Text>Entrar</Text>}
       </Pressable>
