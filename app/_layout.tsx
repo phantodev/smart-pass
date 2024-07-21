@@ -9,6 +9,8 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import Toast from "react-native-toast-message";
+import { QueryClientProvider } from "react-query";
+import { queryClient } from "./../queryClient";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
@@ -31,15 +33,17 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ animation: "none" }}>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="signup" options={{ headerShown: false }} />
-        <Stack.Screen name="forgot" options={{ headerShown: false }} />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" options={{ title: "Oops!" }} />
-      </Stack>
-      <Toast />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack screenOptions={{ animation: "none" }}>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="signup" options={{ headerShown: false }} />
+          <Stack.Screen name="forgot" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" options={{ title: "Oops!" }} />
+        </Stack>
+        <Toast />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }

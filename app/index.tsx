@@ -20,6 +20,9 @@ import { Image } from "expo-image";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Toast from "react-native-toast-message";
+import { useTicketStore } from "@/store";
+import axios from "axios";
+import { useQueryClient } from "react-query";
 
 const schema = z.object({
   email: z
@@ -33,14 +36,20 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export default function Login() {
+  const queryClient = useQueryClient();
+  const ticketStore = useTicketStore();
   const router = useRouter();
   const colorScheme = useColorScheme() ?? "light";
   const styles = createStyles(colorScheme);
   const placeholderColor = Colors[colorScheme].text.replace("1)", "0.5)");
   const [isLoaded, setIsLoaded] = React.useState(false);
 
+  const fetchTickets = async () => {
+    const response = await axios.get("http://192.168.100.7:3000/tickets");
+    return response.data;
+  };
+
   const {
-    register,
     control,
     handleSubmit,
     setError,
@@ -71,6 +80,7 @@ export default function Login() {
           password
         );
         console.tron.log(userCredential);
+        queryClient.prefetchQuery("tickets", fetchTickets);
         await AsyncStorage.setItem("user", JSON.stringify(userCredential));
         router.replace("(auth)");
       }
@@ -91,7 +101,6 @@ export default function Login() {
       });
     }
   }
-
   return (
     <View style={styles.container}>
       <Image
