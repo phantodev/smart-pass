@@ -12,6 +12,7 @@ export default function Perfil() {
 
   const handleLogout = () => {
     // Lógica de logout aqui
+    AsyncStorage.removeItem("user");
     router.replace("/");
     getData("user").then((user) => {
       if (user) {

@@ -96,6 +96,23 @@ export default function Login() {
     }
   }
 
+  async function getData(key: string) {
+    try {
+      const jsonValue = await AsyncStorage.getItem(key);
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {
+      console.error("Erro ao recuperar dados", e);
+    }
+  }
+
+  React.useLayoutEffect(() => {
+    getData("user").then((user) => {
+      if (user) {
+        router.push("(auth)");
+      }
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <Image

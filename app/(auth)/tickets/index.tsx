@@ -8,7 +8,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createTicket } from "@/actions/tickets";
 import Toast from "react-native-toast-message";
-import { useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const schema = z.object({
   name: z.string({ message: "Campo obrigatório" }),
@@ -60,6 +60,31 @@ export default function Ticket() {
     }
   }
 
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const name = formValues.name;
+      const email = formValues.email;
+      if (name && email) {
+        await createTicket(name, email);
+      }
+    },
+    onSuccess: () => {
+      Toast.show({
+        type: "success",
+        text1: "Ticket",
+        text2: "Ticket cadastrado com sucesso!",
+      });
+      queryClient.fetchQuery({ queryKey: ["/tickets"] });
+    },
+    onError: () => {
+      Toast.show({
+        type: "error",
+        text1: "Ticket",
+        text2: "Problemas ao cadastrar ticket",
+      });
+    },
+  });
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Tela de Ticket</Text>
@@ -110,7 +135,7 @@ export default function Ticket() {
           )}
         </View>
       </View>
-      <Pressable style={styles.button} onPress={handleCreateTicket}>
+      <Pressable style={styles.button} onPress={() => mutation.mutate()}>
         <Text>Cadastrar Ticket</Text>
       </Pressable>
     </View>
