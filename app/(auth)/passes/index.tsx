@@ -79,9 +79,9 @@ export default function Passes() {
   return (
     <View style={styles.container}>
       <FlatList
-        data={DATA}
-        renderItem={({ item }) => <Item title={item.title} />}
-        keyExtractor={(item) => item.id}
+        data={data}
+        renderItem={({ item }) => <Item title={item.passenger.name} />}
+        keyExtractor={(item) => item.voucher.id}
       />
     </View>
   );

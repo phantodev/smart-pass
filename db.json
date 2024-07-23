@@ -166,6 +166,105 @@
           "cep": "90200-000"
         }
       }
+    },
+    {
+      "id": "ticket1",
+      "voucher": {
+        "id": "1",
+        "code": "VOUCHER123",
+        "used": false
+      },
+      "status": "verified",
+      "payment_status": "approved",
+      "payment_card": "1234-5678-9101-1121",
+      "payment_plan": "Plano A",
+      "payment_plan_id": "plan1",
+      "passenger": {
+        "birth_date": "1990-01-01",
+        "name": "eduardo",
+        "cpf": "123.456.789-00",
+        "email": "kduburko@gmail.com"
+      },
+      "airport_id": "GRU",
+      "airport": {
+        "id": "GRU",
+        "name": "Aeroporto Internacional de São Paulo/Guarulhos",
+        "iata": "GRU",
+        "picture": "https://example.com/gru.jpg",
+        "address": {
+          "address": "Rodovia Hélio Smidt, s/n",
+          "country": "Brasil",
+          "state": "SP",
+          "city": "Guarulhos",
+          "cep": "07190-100"
+        }
+      }
+    },
+    {
+      "id": "ticket1",
+      "voucher": {
+        "id": "1",
+        "code": "VOUCHER123",
+        "used": false
+      },
+      "status": "verified",
+      "payment_status": "approved",
+      "payment_card": "1234-5678-9101-1121",
+      "payment_plan": "Plano A",
+      "payment_plan_id": "plan1",
+      "passenger": {
+        "birth_date": "1990-01-01",
+        "name": "dudu routes",
+        "cpf": "123.456.789-00",
+        "email": "eduardo@dotmidia.com.br"
+      },
+      "airport_id": "GRU",
+      "airport": {
+        "id": "GRU",
+        "name": "Aeroporto Internacional de São Paulo/Guarulhos",
+        "iata": "GRU",
+        "picture": "https://example.com/gru.jpg",
+        "address": {
+          "address": "Rodovia Hélio Smidt, s/n",
+          "country": "Brasil",
+          "state": "SP",
+          "city": "Guarulhos",
+          "cep": "07190-100"
+        }
+      }
+    },
+    {
+      "id": "ticket1",
+      "voucher": {
+        "id": "1",
+        "code": "VOUCHER123",
+        "used": false
+      },
+      "status": "verified",
+      "payment_status": "approved",
+      "payment_card": "1234-5678-9101-1121",
+      "payment_plan": "Plano A",
+      "payment_plan_id": "plan1",
+      "passenger": {
+        "birth_date": "1990-01-01",
+        "name": "Fernandinho",
+        "cpf": "123.456.789-00",
+        "email": "fer@fer.com"
+      },
+      "airport_id": "GRU",
+      "airport": {
+        "id": "GRU",
+        "name": "Aeroporto Internacional de São Paulo/Guarulhos",
+        "iata": "GRU",
+        "picture": "https://example.com/gru.jpg",
+        "address": {
+          "address": "Rodovia Hélio Smidt, s/n",
+          "country": "Brasil",
+          "state": "SP",
+          "city": "Guarulhos",
+          "cep": "07190-100"
+        }
+      }
     }
   ]
 }

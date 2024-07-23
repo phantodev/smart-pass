@@ -47,6 +47,21 @@ export default function AuthLayout() {
         }}
       />
       <Tabs.Screen
+        name="tickets"
+        options={{
+          href: "tickets",
+          tabBarLabel: "Tickets",
+          headerShown: false,
+          tabBarIcon: ({ color, focused }) => (
+            <AntDesign
+              name="search1"
+              size={32}
+              color={focused ? colors.tabIconSelected : colors.tabIconDefault}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="passes"
         options={{
           tabBarLabel: "Passes",
