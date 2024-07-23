@@ -20,6 +20,8 @@ import { Image } from "expo-image";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Toast from "react-native-toast-message";
+// import { useQueryClient } from "react-query";
+// import getAllTickets from "@/actions/tickets";
 
 const schema = z.object({
   email: z
@@ -33,6 +35,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export default function Login() {
+  // const queryClient = useQueryClient();
   const router = useRouter();
   const colorScheme = useColorScheme() ?? "light";
   const styles = createStyles(colorScheme);
@@ -70,6 +73,7 @@ export default function Login() {
           email,
           password
         );
+        // queryClient.prefetchQuery("/tickets", getAllTickets);
         console.tron.log(userCredential);
         await AsyncStorage.setItem("user", JSON.stringify(userCredential));
         router.replace("(auth)");

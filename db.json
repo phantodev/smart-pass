@@ -1,0 +1,171 @@
+{
+  "tickets": [
+    {
+      "voucher": {
+        "id": "1",
+        "code": "VOUCHER123",
+        "used": false
+      },
+      "id": "ticket1",
+      "status": "verified",
+      "payment_status": "approved",
+      "payment_card": "1234-5678-9101-1121",
+      "payment_plan": "Plano A",
+      "payment_plan_id": "plan1",
+      "passenger": {
+        "birth_date": "1990-01-01",
+        "name": "João Silva",
+        "cpf": "123.456.789-00",
+        "email": "joao.silva@example.com"
+      },
+      "airport_id": "GRU",
+      "airport": {
+        "id": "GRU",
+        "name": "Aeroporto Internacional de São Paulo/Guarulhos",
+        "iata": "GRU",
+        "picture": "https://example.com/gru.jpg",
+        "address": {
+          "address": "Rodovia Hélio Smidt, s/n",
+          "country": "Brasil",
+          "state": "SP",
+          "city": "Guarulhos",
+          "cep": "07190-100"
+        }
+      }
+    },
+    {
+      "voucher": {
+        "id": "2",
+        "code": "VOUCHER124",
+        "used": true,
+        "used_date": "2024-06-10T12:00:00Z"
+      },
+      "id": "ticket2",
+      "status": "unverified",
+      "payment_status": "pending",
+      "payment_card": "2234-5678-9101-1121",
+      "payment_plan": "Plano B",
+      "payment_plan_id": "plan2",
+      "passenger": {
+        "birth_date": "1985-02-10",
+        "name": "Maria Oliveira",
+        "cpf": "987.654.321-00",
+        "email": "maria.oliveira@example.com"
+      },
+      "airport_id": "GIG",
+      "airport": {
+        "id": "GIG",
+        "name": "Aeroporto Internacional Tom Jobim",
+        "iata": "GIG",
+        "picture": "https://example.com/gig.jpg",
+        "address": {
+          "address": "Av. Vinte de Janeiro, s/n",
+          "country": "Brasil",
+          "state": "RJ",
+          "city": "Rio de Janeiro",
+          "cep": "21941-570"
+        }
+      }
+    },
+    {
+      "voucher": {
+        "id": "3",
+        "code": "VOUCHER125",
+        "used": false
+      },
+      "id": "ticket3",
+      "status": "verified",
+      "payment_status": "denied",
+      "payment_card": "3234-5678-9101-1121",
+      "payment_plan": "Plano C",
+      "payment_plan_id": "plan3",
+      "passenger": {
+        "birth_date": "1975-03-15",
+        "name": "Carlos Souza",
+        "cpf": "654.321.987-00",
+        "email": "carlos.souza@example.com"
+      },
+      "airport_id": "BSB",
+      "airport": {
+        "id": "BSB",
+        "name": "Aeroporto Internacional de Brasília",
+        "iata": "BSB",
+        "picture": "https://example.com/bsb.jpg",
+        "address": {
+          "address": "Lago Sul, s/n",
+          "country": "Brasil",
+          "state": "DF",
+          "city": "Brasília",
+          "cep": "71608-900"
+        }
+      }
+    },
+    {
+      "voucher": {
+        "id": "4",
+        "code": "VOUCHER126",
+        "used": true,
+        "used_date": "2024-06-12T12:00:00Z"
+      },
+      "id": "ticket4",
+      "status": "unverified",
+      "payment_status": "approved",
+      "payment_card": "4234-5678-9101-1121",
+      "payment_plan": "Plano D",
+      "payment_plan_id": "plan4",
+      "passenger": {
+        "birth_date": "1995-04-20",
+        "name": "Ana Costa",
+        "cpf": "321.987.654-00",
+        "email": "ana.costa@example.com"
+      },
+      "airport_id": "SSA",
+      "airport": {
+        "id": "SSA",
+        "name": "Aeroporto Internacional de Salvador",
+        "iata": "SSA",
+        "picture": "https://example.com/ssa.jpg",
+        "address": {
+          "address": "Praça Gago Coutinho, s/n",
+          "country": "Brasil",
+          "state": "BA",
+          "city": "Salvador",
+          "cep": "41520-970"
+        }
+      }
+    },
+    {
+      "voucher": {
+        "id": "5",
+        "code": "VOUCHER127",
+        "used": false
+      },
+      "id": "ticket5",
+      "status": "verified",
+      "payment_status": "pending",
+      "payment_card": "5234-5678-9101-1121",
+      "payment_plan": "Plano E",
+      "payment_plan_id": "plan5",
+      "passenger": {
+        "birth_date": "1988-05-25",
+        "name": "Pedro Fernandes",
+        "cpf": "789.123.456-00",
+        "email": "pedro.fernandes@example.com"
+      },
+      "airport_id": "POA",
+      "airport": {
+        "id": "POA",
+        "name": "Aeroporto Internacional Salgado Filho",
+        "iata": "POA",
+        "picture": "https://example.com/poa.jpg",
+        "address": {
+          "address": "Av. dos Estados, 747",
+          "country": "Brasil",
+          "state": "RS",
+          "city": "Porto Alegre",
+          "cep": "90200-000"
+        }
+      }
+    }
+  ]
+}
