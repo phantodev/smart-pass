@@ -4,9 +4,10 @@
       "voucher": {
         "id": "1",
         "code": "VOUCHER123",
-        "used": false
+        "used": false,
+        "day_to_use": "2026-02-24T00:00:00"
       },
-      "id": "ticket1",
+      "id": "155b6100-eb5b-4472-ac03-27e9382ad175",
       "status": "verified",
       "payment_status": "approved",
       "payment_card": "1234-5678-9101-1121",
@@ -38,7 +39,7 @@
         "id": "2",
         "code": "VOUCHER124",
         "used": true,
-        "used_date": "2024-06-10T12:00:00Z"
+        "day_to_use": "2026-01-01"
       },
       "id": "ticket2",
       "status": "unverified",
@@ -71,7 +72,8 @@
       "voucher": {
         "id": "3",
         "code": "VOUCHER125",
-        "used": false
+        "used": false,
+        "day_to_use": "2026-01-01"
       },
       "id": "ticket3",
       "status": "verified",
@@ -105,7 +107,7 @@
         "id": "4",
         "code": "VOUCHER126",
         "used": true,
-        "used_date": "2024-06-12T12:00:00Z"
+        "day_to_use": "2026-01-01"
       },
       "id": "ticket4",
       "status": "unverified",
@@ -138,7 +140,8 @@
       "voucher": {
         "id": "5",
         "code": "VOUCHER127",
-        "used": false
+        "used": false,
+        "day_to_use": "2026-01-01"
       },
       "id": "ticket5",
       "status": "verified",
@@ -172,7 +175,8 @@
       "voucher": {
         "id": "6",
         "code": "VOUCHER123",
-        "used": false
+        "used": false,
+        "day_to_use": "2026-01-01"
       },
       "status": "verified",
       "payment_status": "approved",
@@ -205,7 +209,8 @@
       "voucher": {
         "id": "7",
         "code": "VOUCHER123",
-        "used": false
+        "used": false,
+        "day_to_use": "2026-01-01"
       },
       "status": "verified",
       "payment_status": "approved",
@@ -271,7 +276,8 @@
       "voucher": {
         "id": "9",
         "code": "VOUCHER123",
-        "used": false
+        "used": false,
+        "day_to_use": "2026-01-01"
       },
       "status": "verified",
       "payment_status": "approved",

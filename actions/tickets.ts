@@ -45,3 +45,10 @@ export async function createTicket(name: string, email: string) {
   );
   return response.data;
 }
+
+export async function getTicketById(id: string | string[]) {
+  const response = await axios.get(
+    "http://192.168.100.7:3000/tickets?id=" + id
+  );
+  return response.data;
+}

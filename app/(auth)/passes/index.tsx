@@ -1,6 +1,7 @@
 import getAllTickets from "@/actions/tickets";
 import { createStyles } from "@/assets/css/global";
 import Item from "@/components/Item";
+import ItemStyled from "@/components/ItemStyled";
 import {
   QueryClient,
   QueryClientProvider,
@@ -80,7 +81,15 @@ export default function Passes() {
     <View style={styles.container}>
       <FlatList
         data={data}
-        renderItem={({ item }) => <Item title={item.passenger.name} />}
+        renderItem={({ item }) => (
+          <ItemStyled
+            idTicket={item.id}
+            namePassenger={item.passenger.name}
+            nameAirport={item.airport.name}
+            dateOrder={item.passenger.birth_date}
+            dayToUse={item.voucher.day_to_use}
+          />
+        )}
         keyExtractor={(item) => item.voucher.id}
       />
     </View>
