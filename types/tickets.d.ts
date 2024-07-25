@@ -1,3 +1,5 @@
+import { TStatus } from "./global";
+
 interface IVoucher {
   id: string;
   code: string;
@@ -44,4 +46,9 @@ export interface ITicket {
   passenger: IPassenger;
   airport_id: string;
   airport: IAirport;
+}
+
+export interface ITicket2 {
+  status: TStatus;
+  data: ITicket[];
 }

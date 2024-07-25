@@ -9,9 +9,27 @@ export const createStyles = (theme: "light" | "dark") =>
       alignItems: "center",
       backgroundColor: Colors[theme].background,
     },
+    camera: {
+      position: "relative",
+      flex: 1,
+      display: "flex",
+      justifyContent: "flex-end",
+      alignItems: "flex-end",
+    },
+    textVoucher: {
+      color: Colors[theme].text,
+      fontSize: 26,
+      fontWeight: "bold",
+      marginTop: 30,
+      marginBottom: 30,
+    },
     text: {
       color: Colors[theme].text,
       fontSize: 18,
+    },
+    airportName: {
+      color: Colors[theme].text,
+      fontSize: 14,
     },
     textGhost: {
       color: Colors[theme].text,
@@ -34,6 +52,10 @@ export const createStyles = (theme: "light" | "dark") =>
       width: "60%",
       height: 150,
       marginBottom: 50,
+    },
+    avatar: {
+      width: "100%",
+      height: "100%",
     },
     button: {
       backgroundColor: Colors[theme].tint,

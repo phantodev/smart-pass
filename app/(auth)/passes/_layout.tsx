@@ -1,11 +1,14 @@
 import { Stack } from "expo-router";
-// import { QueryClientProvider } from "react-query";
-// import { queryClient } from "../../../configs/queryClient";
 
 export default function BuscaLayout() {
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        animation: "slide_from_right",
+        animationDuration: 4000,
+      }}>
       <Stack.Screen name="index" options={{ title: "Passes" }} />
+      <Stack.Screen name="[id]" options={{ title: "Detalhe do passe" }} />
     </Stack>
   );
 }

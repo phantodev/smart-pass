@@ -47,6 +47,11 @@ export async function createTicket(name: string, email: string) {
 }
 
 export async function getTicketById(id: string | string[]) {
+  // await new Promise<void>((resolve) => {
+  //   setTimeout(() => {
+  //     resolve();
+  //   }, 4000);
+  // });
   const response = await axios.get(
     "http://192.168.100.7:3000/tickets?id=" + id
   );
